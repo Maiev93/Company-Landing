@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css.map"
+    />
+    <link
+      rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
   </head>
@@ -15,68 +19,126 @@
     <div class="wrapper">
       <header class="header">
         <div class="header__logo">
-          <img src="assets/logo.png" alt="logo" />
+          <img class="header__img" src="assets/logo.png" alt="logo" />
+          <img
+            class="header__burger"
+            id="burger"
+            src="assets/burger.svg"
+            alt="menu"
+          />
+          <img
+            class="header__close"
+            id="close"
+            src="assets/close.png"
+            alt="menu"
+          />
         </div>
         <nav class="header__nav">
           <ul class="header__ul">
             <li class="header__li"><a href="#">Aktuelles</a></li>
             <li class="header__li"><a href="#">Philosophie</a></li>
-            <li class="header__li"><a href="#">Besonderheiten</a></li>
+            <li class="header__li">
+              <a class="active" href="#">Besonderheiten</a>
+            </li>
             <li class="header__li"><a href="#">Partner</a></li>
             <li class="header__li"><a href="#">Kontakt</a></li>
             <li class="header__li"><a href="#">Impressum</a></li>
           </ul>
         </nav>
       </header>
-      <!-- Slider main container -->
-      <div class="swiper-container">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-          <div class="swiper-slide"><img src="assets/bg-1.jpg" alt="slide1"></div>
-          <div class="swiper-slide"><img src="assets/bg-2.jpg" alt="slide2"></div>
-          <div class="swiper-slide"><img src="assets/bg-3.jpg" alt="slide3"></div>
-        </div>
+      <section class="slider">
+        <!-- Slider main container -->
+        <div class="swiper-container slider__container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper slider__wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide slider__slide">
+              <img src="assets/bg-1.jpg" alt="slide1" />
+            </div>
+            <div class="swiper-slide slider__slide">
+              <img src="assets/bg-2.jpg" alt="slide2" />
+            </div>
+            <div class="swiper-slide slider__slide">
+              <img src="assets/bg-3.jpg" alt="slide3" />
+            </div>
+          </div>
 
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
-      </div>
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar slider__scrollbar"></div>
+        </div>
+      </section>
 
       <section class="content">
-          <div class="text-wrapper">
-              <p class="content__header">Sehr geehrte Patienten,</p>
-              <p class="content__text">wir freuen uns, dass Sie sich für unsere Praxis für moderne Zahnheilkunde interessieren – herzlich willkommen!</p>
-              <p class="content__text">Die Homepage soll Ihnen einen ersten Einblick in das Leistungsspektrum und die Behandlungsphilosophie vermitteln. Es wird Sie interessieren, wie schonend und sorgsam ein Zahnarztbesuch sein kann.</p>
-              <p class="content__text">Sie sind herzlich eingeladen, sich bei einem Besuch in meiner Praxis mit ihren Fragen und Wünschen anzuvertrauen.</p>
-              <p class="content__text">Ihre Dr. Dr. Günther Chmelitschek und Dr. Thomas Chmelitschek</p>
-          </div>
-          <div class="info-wrapper">
-            <p class="content__header">Sprechzeiten</p>
-            <address>
-                <p class="content__info">Zahnarztpraxis Dr. Dr. Chmelitschek</p>
-                <p class="content__info">Stollstr. 6 83022 Rosenheim</p>
-            </address>
-            <p class="content__info"> <time>Mo-Fr von 08:00-18:00</time> Uhr und nach Vereinbarung</p>
+        <div class="text-wrapper">
+          <p class="content__header">Sehr geehrte Patienten,</p>
+          <p class="content__text">
+            wir freuen uns, dass Sie sich für unsere Praxis für moderne
+            Zahnheilkunde interessieren – herzlich willkommen!
+          </p>
+          <p class="content__text">
+            Die Homepage soll Ihnen einen ersten Einblick in das
+            Leistungsspektrum und die Behandlungsphilosophie vermitteln. Es wird
+            Sie interessieren, wie schonend und sorgsam ein Zahnarztbesuch sein
+            kann.
+          </p>
+          <p class="content__text">
+            Sie sind herzlich eingeladen, sich bei einem Besuch in meiner Praxis
+            mit ihren Fragen und Wünschen anzuvertrauen.
+          </p>
+          <p class="content__text last">
+            Ihre Dr. Dr. Günther Chmelitschek und Dr. Thomas Chmelitschek
+          </p>
+        </div>
+        <div class="info-wrapper">
+          <p class="content__info-header active-text">Sprechzeiten</p>
+          <address class="content__address">
+            <p class="content__info active-text">
+              Zahnarztpraxis Dr. Dr. Chmelitschek
+            </p>
+            <p class="content__info active-text">Stollstr. 6</p>
+            <p class="content__info active-text">83022 Rosenheim</p>
+          </address>
+          <p class="content__info content__time active-text">
+            <time>Mo-Fr von 08:00-18:00</time> Uhr und nach Vereinbarung
+          </p>
         </div>
       </section>
       <footer class="footer">
-          <p class="footer__copy"> Zahnarztpraxis Chmelitschek © 2011</p>       
+        <p class="footer__copy">Zahnarztpraxis Chmelitschek © 2011</p>
       </footer>
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper-container", {
+        // Optional parameters
+        loop: true,
+        autoplay: {
+          delay: 3000,
+        },
+        // And if we need scrollbar
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+
+      const openBtn = document.getElementById("burger");
+      const closeBtn = document.getElementById("close");
+      const menu = document.querySelector(".header__nav");
+
+      const open = function () {
+        openBtn.classList.add("none");
+        closeBtn.classList.remove("none");
+        menu.classList.add("show");
+      };
+
+      const close = function () {
+        openBtn.classList.remove("none");
+        closeBtn.classList.add("none");
+        menu.classList.remove("show");
+      };
+
+      openBtn.addEventListener("mousedown", open);
+      closeBtn.addEventListener("mousedown", close);
+    </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
